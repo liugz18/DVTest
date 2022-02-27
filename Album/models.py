@@ -1,12 +1,11 @@
 from django.db import models
-
-# Create your models here.
-
+from Run.models import Run
 
 # Create your models here.
 class Album(models.Model):
-    imgpath = models.CharField(max_length=64)
-    run = models.ForeignKey(to="Run.Run", on_delete=models.CASCADE)
+    imgpath = models.ImageField()
+    run = models.ForeignKey(Run, on_delete=models.CASCADE, blank = True, null=True)
 
-    def __str__(self):
-        return self.book_name
+    # def __str__(self):
+    #     return self.id
+ 
