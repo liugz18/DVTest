@@ -11,6 +11,9 @@ class Run(models.Model):
     key = models.CharField(max_length=100, default="")
     user = models.CharField(max_length=100, default="")
     where = models.CharField(max_length=100, default="")
+    configpath = models.FileField(default="")
+    videopath = models.FileField(default="")
+    logpath = models.FileField(default="")
     
 
     def __str__(self):
