@@ -7,9 +7,9 @@ from .models import Run
 def get_meta_data(request, requested_run_key=None):
     try:
         requested_run = Run.objects.filter(key=requested_run_key)
-        if requested_run.count() == 0:
+        if requested_run.count() != 1:
             raise Exception
-        serializer = RunSerializer(requested_run, many=False)
+        serializer = RunSerializer(requested_run.last(), many=False)
         return JsonResponse(serializer.data, safe=False)
     except:
         raise Http404("Run does not exist!")
