@@ -1,5 +1,5 @@
 from django.db import models
-
+from Sweep.models import Sweep
 # Create your models here.
 # Create your models here.
 class Run(models.Model):
@@ -11,9 +11,11 @@ class Run(models.Model):
     key = models.CharField(max_length=100, default="")
     user = models.CharField(max_length=100, default="")
     where = models.CharField(max_length=100, default="")
+    sweep = models.ForeignKey(Sweep, on_delete=models.CASCADE, blank = True, null=True)
     configpath = models.FileField(default="")
     videopath = models.FileField(default="")
     logpath = models.FileField(default="")
+
     
 
     def __str__(self):
