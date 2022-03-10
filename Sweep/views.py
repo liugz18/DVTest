@@ -18,8 +18,9 @@ def get_run_keys(request):
                 run_keys[idx_in_run_keys]["children"].append({"key": requested_run.key})
             else:
                 sweep_keys.append(requested_run.sweep_id)
-                sweep_idx.append(idx)
+                sweep_idx.append(len(run_keys))
                 run_keys.append({"key": requested_run.sweep.name, "children": [{"key": requested_run.key}]})
         return JsonResponse(run_keys, safe=False)
-    except:
-        raise Http404("Get run keys error!")
+    except Exception as e:
+        print(str(e))
+        raise Http404(str(e))

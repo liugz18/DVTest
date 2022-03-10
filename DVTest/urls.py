@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from Album import views as Albumviews
+from Run import views as Runviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('imgs/', include('Album.urls')),
     path('runs/', include('Run.urls')),
     path('addgraph/', Albumviews.create_img),
+    path('addrun/', Runviews.create_run),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

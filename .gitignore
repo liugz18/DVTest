@@ -2,3 +2,4 @@ node_modules/
 appfront/
 package*
 db*
+media/

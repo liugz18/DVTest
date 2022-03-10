@@ -1,0 +1,58 @@
+enable_visualization_layer = 1
+household_visualization_mode = 1
+census_tract_visualization_mode = 1
+fips = 42003
+#### Neighborhood transmission gravity model:
+enable_neighborhood_gravity_model = 1
+
+# Length of each run
+days = 100
+
+influenza_transmissibility = 1
+
+home_neighborhood_prob = 0.5
+
+sick_day_prob = 0.4
+
+##########################################################
+#
+# SCHOOL SETUP PARAMETERS 
+#
+##########################################################
+
+# set to 1 if schools closed during summer
+school_summer_schedule = 0
+
+##########################################################
+#
+# WORKPLACE SETUP PARAMETERS 
+#
+##########################################################
+
+office_size = 50
+
+
+##########################################################
+#
+# TRAVEL PARAMETERS (OPTIONAL)
+#
+##########################################################
+
+# Long-distance Overnight Travel: 
+enable_travel = 0
+
+# distance threshold for overnight trips (in km)
+min_travel_distance = 100.0
+
+##########################################################
+#
+# SCHOOL CLOSURE POLICIES
+#
+##########################################################
+
+school_closure_policy = none
+# school_closure_policy = global
+# school_closure_policy = individual
+
+# number of days to keep a school closed
+school_closure_duration = 10
