@@ -23,6 +23,32 @@ def img_list(request, requested_run=None):
 def random_string():
     return ''.join(random.sample(string.ascii_letters + string.digits, 28))
 
+def create_img_for_run(run_name, run):
+    command = "perl " + settings.FRED_BASE + "bin/fred_plot" + " -k " + run_name
+    command += " --png 1"
+    vars = [
+            'S -v E -v I -v R', 
+            'AR',
+            'ARs',
+            'C', 
+            'Cs',
+            'Is',
+            'M', 
+            'N', 
+            'P', 
+            'RR',
+    ]
+    for var in vars:
+        tmp_command = command + ' -v ' + var
+        pic_name = random_string()
+        tmp_command += " -o " + pic_name
+        os.system(tmp_command)
+        with open(pic_name+'.png', mode='rb') as local_file:
+            new_pic = Album(imgpath=File(local_file), run = run)
+            new_pic.save()
+        os.system('rm '+pic_name+'.png')
+        os.system('rm plot-'+pic_name+'.png.plt')
+
 def create_img(request):
     try:
         graph_property = json.loads(request.body)
