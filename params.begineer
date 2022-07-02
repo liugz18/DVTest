@@ -56,3 +56,60 @@ school_closure_policy = none
 
 # number of days to keep a school closed
 school_closure_duration = 10
+
+
+
+##########################################################
+#
+# ADVANCED PARAMS
+#
+##########################################################
+
+# Neighborhood Activities
+community_distance = 20
+community_prob = 0.1
+home_neighborhood_prob = 0.5
+
+neighborhood_max_distance = 25
+neighborhood_max_destinations = 100
+
+neighborhood_min_distance = 4.0
+neighborhood_distance_exponent = 3.0
+neighborhood_population_exponent = 1.0
+
+# max size per classroom
+school_classroom_size = 40
+
+### symptomatic rate:
+influenza_probability_of_symptoms = 0.67
+
+##########################################################
+#
+# MASTER PARAMS
+#
+##########################################################
+
+### multiplier for asymptomatic infectivity
+influenza_asymp_infectivity = 0.5
+
+# Note: incubation refers to symptoms; latency refers to infectiousness
+
+#### default: lognormal incubation and symptoms duration
+influenza_incubation_period_median = 1.9
+influenza_incubation_period_dispersion = 1.51
+influenza_symptoms_duration_median = 5.0
+influenza_symptoms_duration_dispersion = 1.5 
+
+
+enable_face_mask_usage = 0
+face_mask_compliance = 0
+days_to_wear_face_masks = 2
+influenza_face_mask_transmission_efficacy = 0.26
+influenza_face_mask_susceptibility_efficacy = 0.26
+
+enable_hand_washing = 0
+hand_washing_compliance = 0
+influenza_hand_washing_transmission_efficacy = 0.21
+influenza_hand_washing_susceptibility_efficacy = 0.21
+influenza_face_mask_plus_hand_washing_transmission_efficacy = 0.33
+influenza_face_mask_plus_hand_washing_susceptibility_efficacy = 0.33

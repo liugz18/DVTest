@@ -48,6 +48,27 @@ def create_params_file(properties):
         file.write(f"school_summer_schedule = {int(properties['school_summer_schedule'])}\n")
         file.write(f"sick_day_prob = {properties['sick_day_prob']}\n")
 
+        file.write(f"school_classroom_size = {properties['school_classroom_size']}\n")
+        file.write(f"influenza_probability_of_symptoms = {properties['influenza_probability_of_symptoms']}\n")
+        file.write(f"community_distance = {properties['community_distance']}\n")
+        file.write(f"community_prob = {properties['community_prob']}\n")
+        file.write(f"home_neighborhood_prob = {properties['home_neighborhood_prob']}\n")
+        file.write(f"influenza_asymp_infectivity = {properties['influenza_asymp_infectivity']}\n")
+        file.write(f"influenza_incubation_period_median = {properties['influenza_incubation_period_median']}\n")
+        file.write(f"influenza_incubation_period_dispersion = {properties['influenza_incubation_period_dispersion']}\n")
+        file.write(f"influenza_symptoms_duration_median = {properties['influenza_symptoms_duration_median']}\n")
+        file.write(f"influenza_symptoms_duration_dispersion = {properties['influenza_symptoms_duration_dispersion']}\n")
+        file.write(f"enable_face_mask_usage = {int(properties['enable_face_mask_usage'])}\n")
+        file.write(f"face_mask_compliance = {properties['face_mask_compliance']}\n")
+        file.write(f"influenza_face_mask_transmission_efficacy = {properties['influenza_face_mask_transmission_efficacy']}\n")
+        file.write(f"influenza_face_mask_susceptibility_efficacy = {properties['influenza_face_mask_susceptibility_efficacy']}\n")
+        file.write(f"enable_hand_washing = {int(properties['enable_hand_washing'])}\n")
+        file.write(f"hand_washing_compliance = {properties['hand_washing_compliance']}\n")
+        file.write(f"influenza_hand_washing_transmission_efficacy = {properties['influenza_hand_washing_transmission_efficacy']}\n")
+        file.write(f"influenza_hand_washing_susceptibility_efficacy = {properties['influenza_hand_washing_susceptibility_efficacy']}\n")
+        file.write(f"influenza_face_mask_plus_hand_washing_transmission_efficacy = {properties['influenza_face_mask_plus_hand_washing_transmission_efficacy']}\n")
+
+
 
 def get_next_id():
     id_file_name = settings.FRED_BASE + "RESULTS/ID"
@@ -62,7 +83,7 @@ def fips_to_map_pos(fips):
         '42003': " -x -80.5 -X -79.5 -y 40.3 -Y 40.6 ",
         '42063': "-x -79.2 -X -79 -y 40.3 -Y 41"
     }
-    return mapping[fips]
+    return " -x -80.5 -X -79.5 -y 40.3 -Y 40.6 " #mapping[fips]
 
 def create_movie(properties):
     movie_command = "perl " + settings.FRED_BASE + "bin/fred_make_movie" + " -k " + properties['key'] +  " --google 0 --census_tracts 1" + fips_to_map_pos(properties['fips'])
