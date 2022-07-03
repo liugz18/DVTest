@@ -11,6 +11,7 @@ import json
 import os
 import random
 import string
+import re
 
 def get_meta_data(request, requested_run_key=None):
     try:
@@ -90,6 +91,24 @@ def create_movie(properties):
     os.system(movie_command)
     os.system(f"mv {properties['key']}.mp4 ./media/")
     # print(movie_command)
+
+def get_config(request, requested_run_key):
+    try:
+        requested_run = Run.objects.filter(key=requested_run_key)
+        if requested_run.count() != 1:
+            raise Exception
+        file_name = "./media/params/params." + requested_run_key
+        configs = {}
+        with open(file_name, 'r', encoding='utf-8') as file:
+            line = file.readline()
+            while line:
+                key, value = re.split("[ = ]+", line)
+                configs[key] = value
+                line = file.readline()
+        return JsonResponse(configs, safe=False)
+    except:
+        raise Http404("Run does not exist!")
+        
 
 def create_run_object(properties, this_id):
     prefix = settings.FRED_BASE + "RESULTS/JOB/" + this_id + "META/"
